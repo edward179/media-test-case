@@ -21,7 +21,7 @@ flowchart LR
 
     subgraph ET["2. TRANSFORM — Python/pandas (build_data_mart.py)"]
         B1["Join spend + acquisition<br/>theo date + campaign_id"]
-        B2["Cộng dồn spend & install theo tuần<br/>(nhóm 7 ngày đúng mốc cohort_week của LTV)"]
+        B2["Gộp spend & install theo tuần<br/>(đúng mốc cohort_week của LTV)"]
         B3["Tính CAC, CTR, rolling 7-day CAC,<br/>cohort maturity, LTV:CAC"]
         B4["Composite health_score →<br/>Scale / Maintain / Optimize / Pause"]
     end
