@@ -72,33 +72,33 @@ Prototype đọc trực tiếp output của Task 1 (`fact_daily`, `mart_campaign
 
 ```mermaid
 flowchart LR
-    subgraph SRC["Nguồn dữ liệu thật — đề xuất, chưa nối"]
-        S0["Meta / Google / TikTok<br/>Ads API"]
+    subgraph SRC["Nền tảng quảng cáo thật (Meta / Google / TikTok) — chưa kết nối, mới là đề xuất"]
+        S0["Ads API<br/>(Meta / Google / TikTok)"]
     end
 
-    subgraph RULE["RULE-BASED — Python/pandas, KHÔNG dùng LLM"]
-        B1["Bước 1 — Nhận vào<br/>fact_daily.csv +<br/>mart_campaign_summary.csv"]
-        B2["Bước 2 — Xử lý tín hiệu<br/>rolling CAC trend · z-score anomaly<br/>CAC vs target · LTV:CAC trend<br/>CTR decay"]
+    subgraph RULE["TÍNH BẰNG CÔNG THỨC CÓ SẴN — Python/pandas, KHÔNG dùng AI"]
+        B1["Bước 1 — Nhận dữ liệu đầu vào<br/>từ Task 1: fact_daily.csv +<br/>mart_campaign_summary.csv"]
+        B2["Bước 2 — Tính chỉ số cảnh báo<br/>CAC tăng bất thường · lệch so target ·<br/>LTV:CAC giảm · CTR giảm dần"]
     end
 
-    subgraph LLM["LLM — Claude API, 1 lần gọi, structured output"]
-        B34["Bước 3: action / budget_delta_% /<br/>confidence / rationale<br/>Bước 4: additional_suggestions<br/>(cần Media duyệt)"]
+    subgraph LLM["AI TẠO ĐỀ XUẤT — Claude API, gọi 1 lần, trả lời theo khuôn mẫu cố định"]
+        B34["Bước 3 — AI đề xuất hành động:<br/>Scale/Maintain/Optimize/Pause,<br/>% ngân sách, độ tin cậy, lý do<br/>Bước 4 — Gợi ý thêm cho Media<br/>(cần người duyệt)"]
     end
 
-    subgraph GOV["GOVERNANCE — đề xuất kiến trúc, CHƯA code"]
-        B6a["Bước 6 — Human approval gate<br/>(vd: Slack approval message)"]
-        B6b["Audit log<br/>ghi ai duyệt/từ chối"]
+    subgraph GOV["KIỂM SOÁT RỦI RO — mới là đề xuất kiến trúc, CHƯA code"]
+        B6a["Bước 6 — Người duyệt trước khi<br/>áp dụng (vd: nhắn Slack xin duyệt)"]
+        B6b["Nhật ký duyệt<br/>(ai duyệt/từ chối, lúc nào)"]
     end
 
-    S0 -. "Bước 5 (đề xuất):<br/>Cloud Function + Scheduler + dbt" .-> B1
+    S0 -. "Bước 5 (đề xuất, chưa làm):<br/>tự động lấy dữ liệu mỗi đêm" .-> B1
     B1 --> B2
     B2 --> B34
-    B34 -. "media plan JSON" .-> B6a
+    B34 -. "bản đề xuất media plan (JSON)" .-> B6a
     B6a -. "luôn ghi lại" .-> B6b
-    B6a -. "nếu duyệt → mutate budget" .-> S0
+    B6a -. "nếu được duyệt → tự chỉnh ngân sách" .-> S0
 ```
 
-*Khung viền liền (RULE-BASED, LLM) = đã code, chạy thật trên data thật. Khung nét đứt (SRC, GOV) = đề xuất kiến trúc, cố ý chưa code trong phạm vi thời gian assessment — cần hạ tầng/credentials thật (Slack, Ads API) và governance đúng cách trước khi mutate ngân sách thật.*
+*Khung viền liền (tính bằng công thức, AI đề xuất) = đã code, chạy thật trên data thật. Khung nét đứt (nền tảng quảng cáo thật, kiểm soát rủi ro) = mới là đề xuất kiến trúc, cố ý chưa code trong phạm vi thời gian assessment — cần hạ tầng/credentials thật (Slack, Ads API) và cơ chế duyệt đúng cách trước khi tự động chỉnh ngân sách thật.*
 
 ### Chạy thử
 ```bash
