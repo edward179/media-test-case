@@ -25,6 +25,23 @@ Pipeline Python (pandas) transform 4 file CSV thô (`Momo Test Data/`) thành 4 
 | `output/fact_weekly_cohort.csv` | Fact theo tuần × campaign — nối đúng grain với LTV cohort |
 | `output/mart_campaign_summary.csv` | 1 dòng/campaign — health_score, recommended_action, dùng cho toàn dashboard |
 
+### Công thức các Metric trên Dashboard
+
+| Card / Chart | Công thức | Ý nghĩa |
+|---|---|---|
+| Total Spend | `SUM(total_spend)` | Tổng ngân sách đã chi của toàn bộ campaign |
+| Blended CAC | `SUM(total_spend) / SUM(total_installs)` | Chi phí trung bình để có 1 lượt cài app — tính gộp trên tổng chi phí và tổng install, không phải trung bình cộng CAC của từng campaign (cộng dồn kiểu đó sẽ sai số) |
+| Avg Mature LTV:CAC | `AVG(mature_ltv_cac)`, chỉ lấy campaign có `ltv_data_status = Mature Available` | Trung bình tỷ lệ giá trị thu về / chi phí, chỉ tính trên campaign đã có số LTV thật (đã "chín") |
+| # Scale / # Pause | `COUNT_DISTINCT(campaign_id)`, filter `recommended_action = Scale` / `Pause` | Số campaign đang được đề xuất tăng ngân sách / nên dừng lại |
+| Spend – Prior 7 Days | `SUM(daily_spend_vnd)`, filter ngày 21/07–27/07/2024 | Tổng chi tiêu 7 ngày trước đó (kỳ để so sánh) |
+| Spend – Last 7 Days | `SUM(daily_spend_vnd)`, filter ngày 28/07–03/08/2024 | Tổng chi tiêu 7 ngày gần nhất (kỳ hiện tại) |
+| WoW % | `(Last 7 Days − Prior 7 Days) / Prior 7 Days × 100` | % thay đổi spend tuần này so với tuần trước. Lưu ý: hiện đang tính tay và gõ cố định vào text box, chưa phải calculated field tự chạy lại khi data đổi |
+| Platform CAC (line chart) | `SUM(daily_spend_vnd) / SUM(installs)`, breakdown theo `platform` | CAC theo từng nền tảng, biến động theo thời gian |
+| Campaign Ranking (bar + table) | `health_score`, sắp xếp giảm dần | Điểm tổng hợp sức khỏe campaign: 40% hiệu quả CAC + 35% LTV:CAC + 25% retention D7 |
+| Budget Allocation (pie chart) | `SUM(total_spend)`, dimension `platform` | Ngân sách đã chi được phân bổ ra sao giữa các kênh |
+
+Tất cả metric trên dùng nguồn `mart_campaign_summary` hoặc `fact_daily` (đều là output của `build_data_mart.py`) — không có metric nào tính trực tiếp từ 4 file CSV gốc.
+
 ---
 
 ## 🤖 Task 2 — AI-Powered Media Planning Automation
