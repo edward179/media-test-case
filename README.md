@@ -13,15 +13,9 @@ Pipeline Python (pandas) transform 4 file CSV thô (`Momo Test Data/`) thành 4 
 ![Task 1 — Data Architecture (Extract → Transform → Load → Visualize)](task1-data-architecture.png)
 
 **Điểm khác biệt hóa chính**:
-
-**1. Hai file dữ liệu không cùng "cấp độ chi tiết" (granularity mismatch)**
-`momo_user_ltv.csv` mỗi dòng là 1 **cohort** — 1 nhóm user cùng cài app trong **1 tuần** cụ thể, được theo dõi chung với nhau (gọi là dữ liệu cấp **tuần**). Trong khi đó `momo_media_spend.csv`/`momo_user_acquisition.csv` mỗi dòng là **1 ngày** (dữ liệu cấp **ngày**). Nếu **nối thẳng cả 4 file lại với nhau** (cách làm phổ biến, hay gọi là "blend data" — tức ghép nhiều nguồn khác nhau lại mà không xử lý gì trước) thì 1 dòng "tuần" bên LTV sẽ khớp sai với 7 dòng "ngày" bên kia → dữ liệu bị nhân sai hoặc bị loại bỏ hẳn. Cách xử lý: cộng dồn spend/install của đúng 7 ngày liên tiếp — khớp đúng mốc tuần (`cohort_week`) bên LTV đang dùng — để đưa cả 2 bên về cùng "cấp độ tuần" trước khi nối, thay vì ghép lệch cấp độ.
-
-**2. Chặn quyết định dựa trên số liệu LTV còn "non"**
-Data chỉ có từ 01/06 đến 03/08/2024 (~63 ngày). Cột `D90_revenue_per_user` nghĩa là "doanh thu trung bình mỗi user tính đến ngày thứ 90 sau khi cài app" — nhưng vì data chỉ dài 63 ngày, **không cohort nào đã tồn tại đủ 90 ngày thật**, nên số ở cột này chỉ là ngoại suy, không phải số thật. Em gọi 1 cohort là "**chín**" khi nó đã tồn tại đủ lâu để mốc đó là số **thật** (vd cohort mới cài app 10 ngày thì D7 là số thật, còn D30/D90 chưa "chín"). Logic `COALESCE D90→D30→D7→D1` nghĩa là: luôn ưu tiên lấy mốc xa nhất **mà cohort đó đã thật sự đủ tuổi** — thử D90 trước, chưa đủ tuổi thì lùi về D30, rồi D7, cuối cùng mới D1 — không bao giờ lấy liều 1 mốc mà cohort chưa tới tuổi. Và quan trọng nhất: nếu 1 campaign chưa có bằng chứng LTV "chín" nào, hệ thống **không bao giờ** đề xuất *Scale* (tăng ngân sách) cho campaign đó dù chỉ số khác trông tốt — vì tăng tiền dựa trên số liệu còn non là rủi ro.
-
-**3. Tính đúng "trung bình trượt 7 ngày" theo lịch thật, không theo số dòng dữ liệu**
-Tưởng mỗi campaign có 1 dòng data/ngày, nhưng thực tế khoảng cách giữa các lần đo giãn dần — có lúc cách 1 ngày, có lúc cách tới 9 ngày. Nếu tính "trung bình 7 **dòng** gần nhất" (cách làm phổ biến), 7 dòng đó có lúc thực chất trải dài đến 30-40 ngày thực tế → CAC trung bình tính sai lệch nặng. Sửa: `rolling_7d_cac` tính theo đúng **7 ngày lịch thật** (1 tuần theo lịch), bất kể trong đó có bao nhiêu dòng data, để con số phản ánh đúng khoảng thời gian thực.
+- **Cấp độ dữ liệu không khớp nhau**: LTV tính theo **tuần** (cohort), spend/install tính theo **ngày** → phải cộng dồn spend/install thành đúng từng tuần trước khi nối 2 bảng, nếu nối thẳng luôn (blend) sẽ bị sai lệch hoặc mất data LTV.
+- **Không dùng số LTV còn "non"**: data chỉ dài 63 ngày nên chưa cohort nào đủ 90 ngày tuổi thật (D90 chỉ là số ngoại suy) → chỉ lấy mốc D90/D30/D7 mà cohort đã thật sự đủ tuổi, và không bao giờ đề xuất tăng ngân sách (Scale) nếu thiếu bằng chứng LTV "chín" (đủ tuổi để số liệu là thật).
+- **Tính CAC trung bình theo đúng lịch**: khoảng cách giữa các lần đo dữ liệu không đều (1–9 ngày/lần) → tính rolling 7 ngày theo **lịch thật**, không theo số dòng dữ liệu, để tránh sai lệch nặng.
 
 ### Output
 | File | Nội dung |
