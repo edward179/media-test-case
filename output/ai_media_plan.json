@@ -1,0 +1,138 @@
+[
+  {
+    "campaign_id": "CAMP_001",
+    "action": "Maintain",
+    "budget_delta_pct": 0,
+    "confidence": "Medium",
+    "rationale": "Health score 71.1, CAC +2.9% so target, mature LTV:CAC=0.76, rolling CAC đang stable (0.3% qua giai đoạn quan sát). Đề xuất Maintain.",
+    "additional_suggestions": [],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_002",
+    "action": "Scale",
+    "budget_delta_pct": 15,
+    "confidence": "High",
+    "rationale": "Health score 85.3, CAC +6.7% so target, mature LTV:CAC=1.69, rolling CAC đang stable (-0.9% qua giai đoạn quan sát). Đề xuất Scale.",
+    "additional_suggestions": [],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_003",
+    "action": "Maintain",
+    "budget_delta_pct": 0,
+    "confidence": "Medium",
+    "rationale": "Health score 95.0, CAC -40.9% so target, mature LTV:CAC=2.0, rolling CAC đang stable (0.7% qua giai đoạn quan sát). Đề xuất Maintain.",
+    "additional_suggestions": [],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_004",
+    "action": "Scale",
+    "budget_delta_pct": 15,
+    "confidence": "High",
+    "rationale": "Health score 89.2, CAC -6.4% so target, mature LTV:CAC=1.72, rolling CAC đang stable (-3.1% qua giai đoạn quan sát). Đề xuất Scale.",
+    "additional_suggestions": [],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_005",
+    "action": "Scale",
+    "budget_delta_pct": 15,
+    "confidence": "High",
+    "rationale": "Health score 92.4, CAC +2.5% so target, mature LTV:CAC=2.04, rolling CAC đang stable (-0.1% qua giai đoạn quan sát). Đề xuất Scale.",
+    "additional_suggestions": [],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_006",
+    "action": "Maintain",
+    "budget_delta_pct": 0,
+    "confidence": "Medium",
+    "rationale": "Health score 66.3, CAC +37.5% so target, mature LTV:CAC=1.19, rolling CAC đang stable (0.6% qua giai đoạn quan sát). Đề xuất Maintain.",
+    "additional_suggestions": [
+      {
+        "type": "creative_fatigue",
+        "detail": "CTR giảm -15.2% qua giai đoạn quan sát — dấu hiệu creative fatigue, đề xuất refresh creative."
+      }
+    ],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_007",
+    "action": "Maintain",
+    "budget_delta_pct": 0,
+    "confidence": "Medium",
+    "rationale": "Health score 61.9, CAC +19.1% so target, mature LTV:CAC=0.6, rolling CAC đang stable (0.0% qua giai đoạn quan sát). Đề xuất Maintain.",
+    "additional_suggestions": [],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_008",
+    "action": "Optimize",
+    "budget_delta_pct": -5,
+    "confidence": "Low",
+    "rationale": "CAC hiện tại 12,867đ (+2.9% so target 12,500đ), nhưng ltv_data_status='No LTV Tracking' nên chưa đủ bằng chứng LTV để Scale. Đề xuất Optimize, theo dõi thêm cho tới khi có dữ liệu LTV chín.",
+    "additional_suggestions": [],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_009",
+    "action": "Scale",
+    "budget_delta_pct": 15,
+    "confidence": "High",
+    "rationale": "Health score 75.4, CAC +5.8% so target, mature LTV:CAC=1.15, rolling CAC đang stable (0.0% qua giai đoạn quan sát). Đề xuất Scale.",
+    "additional_suggestions": [],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_010",
+    "action": "Optimize",
+    "budget_delta_pct": -5,
+    "confidence": "Low",
+    "rationale": "CAC hiện tại 13,342đ (-4.7% so target 14,000đ), nhưng ltv_data_status='No LTV Tracking' nên chưa đủ bằng chứng LTV để Scale. Đề xuất Optimize, theo dõi thêm cho tới khi có dữ liệu LTV chín.",
+    "additional_suggestions": [],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_011",
+    "action": "Scale",
+    "budget_delta_pct": 15,
+    "confidence": "High",
+    "rationale": "Health score 99.7, CAC -63.8% so target, mature LTV:CAC=1.78, rolling CAC đang stable (-3.8% qua giai đoạn quan sát). Đề xuất Scale.",
+    "additional_suggestions": [
+      {
+        "type": "creative_fatigue",
+        "detail": "CTR giảm -15.9% qua giai đoạn quan sát — dấu hiệu creative fatigue, đề xuất refresh creative."
+      }
+    ],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_012",
+    "action": "Scale",
+    "budget_delta_pct": 15,
+    "confidence": "High",
+    "rationale": "Health score 107.5, CAC -44.0% so target, mature LTV:CAC=2.67, rolling CAC đang stable (-1.1% qua giai đoạn quan sát). Đề xuất Scale.",
+    "additional_suggestions": [],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_013",
+    "action": "Optimize",
+    "budget_delta_pct": -5,
+    "confidence": "Low",
+    "rationale": "CAC hiện tại 13,374đ (+11.4% so target 12,000đ), nhưng ltv_data_status='No LTV Tracking' nên chưa đủ bằng chứng LTV để Scale. Đề xuất Optimize, theo dõi thêm cho tới khi có dữ liệu LTV chín.",
+    "additional_suggestions": [],
+    "_source": "MOCK"
+  },
+  {
+    "campaign_id": "CAMP_014",
+    "action": "Maintain",
+    "budget_delta_pct": 0,
+    "confidence": "Medium",
+    "rationale": "Health score 106.2, CAC -45.8% so target, mature LTV:CAC=2.49, rolling CAC đang stable (0.1% qua giai đoạn quan sát). Đề xuất Maintain.",
+    "additional_suggestions": [],
+    "_source": "MOCK"
+  }
+]

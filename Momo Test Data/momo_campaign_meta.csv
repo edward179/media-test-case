@@ -1,0 +1,15 @@
+campaign_id,campaign_name,platform,objective,target_audience,start_date,end_date,status,campaign_budget_vnd,daily_budget_vnd,bid_strategy,target_cac_vnd
+CAMP_001,Summer Sale Awareness,Facebook,Awareness,Broad Interest in Sales,2024-06-01,2024-08-31,Active,150000000,5000000,CPC,15000
+CAMP_002,Search - Install App,Google Ads,Conversion,High-Intent App Installers,2024-06-01,2024-08-31,Active,120000000,4000000,Target CPA,12000
+CAMP_003,TikTok Creator Collab,TikTok,Awareness,Gen Z & Young Millennials,2024-06-01,2024-08-31,Active,100000000,3200000,CPV,7500
+CAMP_004,Stories Retargeting,Instagram,Conversion,Website Visitors,2024-06-01,2024-07-31,Active,60000000,2000000,CPC,10000
+CAMP_005,Lookalike Converters,Facebook,Conversion,Lookalike High-Value Users,2024-06-01,2024-08-31,Active,140000000,4500000,Target CPA,13000
+CAMP_006,YouTube In-stream,Google Ads,Awareness,Video Viewers,2024-06-01,2024-08-31,Active,110000000,3500000,CPV,8000
+CAMP_007,New Market - Da Nang,Facebook,Awareness,Da Nang Metro Area,2024-06-04,2024-08-31,Active,80000000,2800000,CPC,14000
+CAMP_008,App Install - Mid Market,Google Ads,Conversion,Middle-Income Urban Users,2024-06-04,2024-08-31,Active,100000000,3200000,Target CPA,12500
+CAMP_009,DM Stories Ad,Instagram,Conversion,DM Engaged Users,2024-06-04,2024-08-31,Active,50000000,1600000,CPC,10500
+CAMP_010,Premium User Upsell,Facebook,Conversion,Existing Premium Users,2024-06-06,2024-08-31,Active,75000000,2700000,Target CPA,14000
+CAMP_011,Influencer Partnership,Instagram,Awareness,Influencer Followers,2024-06-10,2024-08-31,Active,120000000,4100000,CPM,25000
+CAMP_012,Gaming Vertical TikTok,TikTok,Awareness,Gaming Content Viewers,2024-06-07,2024-08-31,Active,130000000,4400000,CPV,7800
+CAMP_013,Weekend Flash Sale,Facebook,Awareness,Weekend Active Users,2024-06-10,2024-08-31,Active,140000000,4800000,CPC,12000
+CAMP_014,E-Sports Partnership,TikTok,Awareness,E-Sports Fans,2024-06-12,2024-08-31,Active,90000000,3100000,CPV,8200

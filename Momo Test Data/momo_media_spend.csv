@@ -1,0 +1,262 @@
+date,platform,campaign_id,campaign_name,daily_spend_vnd,clicks,impressions,spend_category
+2024-06-01,Facebook,CAMP_001,Summer Sale Awareness,5000000,1250,125000,Awareness
+2024-06-01,Google Ads,CAMP_002,Search - Install App,3200000,890,45000,Conversion
+2024-06-01,TikTok,CAMP_003,TikTok Creator Collab,2800000,2100,180000,Awareness
+2024-06-01,Instagram,CAMP_004,Stories Retargeting,1500000,420,85000,Conversion
+2024-06-01,Facebook,CAMP_005,Lookalike Converters,4200000,1050,95000,Conversion
+2024-06-01,Google Ads,CAMP_006,YouTube In-stream,2100000,650,120000,Awareness
+2024-06-02,Facebook,CAMP_001,Summer Sale Awareness,5100000,1280,128000,Awareness
+2024-06-02,Google Ads,CAMP_002,Search - Install App,3150000,875,43000,Conversion
+2024-06-02,TikTok,CAMP_003,TikTok Creator Collab,2900000,2180,190000,Awareness
+2024-06-02,Instagram,CAMP_004,Stories Retargeting,1600000,445,88000,Conversion
+2024-06-02,Facebook,CAMP_005,Lookalike Converters,4100000,1020,92000,Conversion
+2024-06-02,Google Ads,CAMP_006,YouTube In-stream,2050000,620,115000,Awareness
+2024-06-03,Facebook,CAMP_001,Summer Sale Awareness,5300000,1350,135000,Awareness
+2024-06-03,Google Ads,CAMP_002,Search - Install App,3300000,920,48000,Conversion
+2024-06-03,TikTok,CAMP_003,TikTok Creator Collab,2700000,2050,170000,Awareness
+2024-06-03,Instagram,CAMP_004,Stories Retargeting,1700000,480,95000,Conversion
+2024-06-03,Facebook,CAMP_005,Lookalike Converters,4300000,1080,98000,Conversion
+2024-06-03,Google Ads,CAMP_006,YouTube In-stream,2200000,680,130000,Awareness
+2024-06-04,Facebook,CAMP_007,New Market - Da Nang,3500000,875,105000,Awareness
+2024-06-04,TikTok,CAMP_003,TikTok Creator Collab,2600000,2000,165000,Awareness
+2024-06-04,Google Ads,CAMP_008,App Install - Mid Market,2800000,780,62000,Conversion
+2024-06-04,Facebook,CAMP_005,Lookalike Converters,4400000,1100,102000,Conversion
+2024-06-04,Instagram,CAMP_009,DM Stories Ad,1300000,390,72000,Conversion
+2024-06-05,Facebook,CAMP_001,Summer Sale Awareness,5200000,1310,130000,Awareness
+2024-06-05,TikTok,CAMP_003,TikTok Creator Collab,3000000,2250,200000,Awareness
+2024-06-05,Google Ads,CAMP_002,Search - Install App,3400000,950,52000,Conversion
+2024-06-05,Facebook,CAMP_007,New Market - Da Nang,3600000,900,110000,Awareness
+2024-06-05,Instagram,CAMP_004,Stories Retargeting,1800000,510,105000,Conversion
+2024-06-06,Facebook,CAMP_010,Premium User Upsell,2900000,720,88000,Conversion
+2024-06-06,TikTok,CAMP_003,TikTok Creator Collab,2550000,1950,155000,Awareness
+2024-06-06,Google Ads,CAMP_006,YouTube In-stream,2300000,710,140000,Awareness
+2024-06-06,Facebook,CAMP_001,Summer Sale Awareness,4900000,1230,122000,Awareness
+2024-06-06,Instagram,CAMP_011,Influencer Partnership,2100000,580,110000,Awareness
+2024-06-07,Facebook,CAMP_005,Lookalike Converters,4600000,1150,108000,Conversion
+2024-06-07,Google Ads,CAMP_002,Search - Install App,3100000,860,40000,Conversion
+2024-06-07,TikTok,CAMP_012,Gaming Vertical TikTok,3200000,2400,220000,Awareness
+2024-06-07,Facebook,CAMP_001,Summer Sale Awareness,5500000,1380,138000,Awareness
+2024-06-08,Facebook,CAMP_007,New Market - Da Nang,3700000,920,115000,Awareness
+2024-06-08,Instagram,CAMP_004,Stories Retargeting,1900000,540,110000,Conversion
+2024-06-08,TikTok,CAMP_003,TikTok Creator Collab,2800000,2100,190000,Awareness
+2024-06-08,Google Ads,CAMP_008,App Install - Mid Market,2900000,810,65000,Conversion
+2024-06-09,Facebook,CAMP_001,Summer Sale Awareness,5400000,1360,135000,Awareness
+2024-06-09,Facebook,CAMP_010,Premium User Upsell,3000000,750,92000,Conversion
+2024-06-09,TikTok,CAMP_003,TikTok Creator Collab,2700000,2050,170000,Awareness
+2024-06-09,Google Ads,CAMP_002,Search - Install App,3300000,920,48000,Conversion
+2024-06-10,Facebook,CAMP_013,Weekend Flash Sale,4100000,1020,102000,Awareness
+2024-06-10,Instagram,CAMP_011,Influencer Partnership,2200000,610,120000,Awareness
+2024-06-10,TikTok,CAMP_012,Gaming Vertical TikTok,3100000,2320,210000,Awareness
+2024-06-10,Google Ads,CAMP_006,YouTube In-stream,2400000,740,150000,Awareness
+2024-06-11,Facebook,CAMP_005,Lookalike Converters,4700000,1170,110000,Conversion
+2024-06-11,Facebook,CAMP_001,Summer Sale Awareness,5100000,1280,128000,Awareness
+2024-06-11,Google Ads,CAMP_002,Search - Install App,3250000,905,45000,Conversion
+2024-06-11,TikTok,CAMP_003,TikTok Creator Collab,2900000,2180,190000,Awareness
+2024-06-12,Facebook,CAMP_007,New Market - Da Nang,3800000,950,120000,Awareness
+2024-06-12,Instagram,CAMP_004,Stories Retargeting,2000000,570,115000,Conversion
+2024-06-12,TikTok,CAMP_014,E-Sports Partnership,2400000,1800,140000,Awareness
+2024-06-12,Facebook,CAMP_010,Premium User Upsell,2800000,700,85000,Conversion
+2024-06-13,Google Ads,CAMP_008,App Install - Mid Market,3000000,835,68000,Conversion
+2024-06-13,TikTok,CAMP_003,TikTok Creator Collab,2800000,2100,190000,Awareness
+2024-06-13,Facebook,CAMP_001,Summer Sale Awareness,5600000,1400,140000,Awareness
+2024-06-13,Instagram,CAMP_009,DM Stories Ad,1400000,420,78000,Conversion
+2024-06-14,Facebook,CAMP_013,Weekend Flash Sale,4200000,1050,105000,Awareness
+2024-06-14,Facebook,CAMP_005,Lookalike Converters,4300000,1075,95000,Conversion
+2024-06-14,Google Ads,CAMP_006,YouTube In-stream,2500000,770,160000,Awareness
+2024-06-14,TikTok,CAMP_012,Gaming Vertical TikTok,3300000,2480,240000,Awareness
+2024-06-15,Facebook,CAMP_001,Summer Sale Awareness,5200000,1310,130000,Awareness
+2024-06-15,Google Ads,CAMP_002,Search - Install App,3400000,945,50000,Conversion
+2024-06-15,TikTok,CAMP_003,TikTok Creator Collab,2600000,1950,155000,Awareness
+2024-06-15,Instagram,CAMP_011,Influencer Partnership,2300000,640,130000,Awareness
+2024-06-16,Facebook,CAMP_007,New Market - Da Nang,3900000,975,125000,Awareness
+2024-06-16,Instagram,CAMP_004,Stories Retargeting,2100000,600,120000,Conversion
+2024-06-16,Facebook,CAMP_010,Premium User Upsell,2700000,675,80000,Conversion
+2024-06-16,Google Ads,CAMP_008,App Install - Mid Market,2700000,750,58000,Conversion
+2024-06-17,TikTok,CAMP_014,E-Sports Partnership,2500000,1875,155000,Awareness
+2024-06-17,Facebook,CAMP_001,Summer Sale Awareness,5300000,1330,133000,Awareness
+2024-06-17,Google Ads,CAMP_002,Search - Install App,3200000,890,44000,Conversion
+2024-06-17,Facebook,CAMP_005,Lookalike Converters,4500000,1125,105000,Conversion
+2024-06-18,Instagram,CAMP_009,DM Stories Ad,1500000,450,85000,Conversion
+2024-06-18,TikTok,CAMP_003,TikTok Creator Collab,2700000,2025,168000,Awareness
+2024-06-18,Facebook,CAMP_013,Weekend Flash Sale,4300000,1075,107500,Awareness
+2024-06-18,Google Ads,CAMP_006,YouTube In-stream,2600000,800,170000,Awareness
+2024-06-19,Facebook,CAMP_005,Lookalike Converters,4400000,1100,102000,Conversion
+2024-06-19,Facebook,CAMP_007,New Market - Da Nang,3700000,925,115000,Awareness
+2024-06-19,TikTok,CAMP_012,Gaming Vertical TikTok,3400000,2550,255000,Awareness
+2024-06-19,Instagram,CAMP_011,Influencer Partnership,2400000,665,140000,Awareness
+2024-06-20,Google Ads,CAMP_008,App Install - Mid Market,2800000,780,64000,Conversion
+2024-06-20,Facebook,CAMP_001,Summer Sale Awareness,5700000,1425,142500,Awareness
+2024-06-20,TikTok,CAMP_003,TikTok Creator Collab,2500000,1875,155000,Awareness
+2024-06-20,Instagram,CAMP_004,Stories Retargeting,2200000,630,126000,Conversion
+2024-06-21,Facebook,CAMP_010,Premium User Upsell,3100000,775,97500,Conversion
+2024-06-21,Google Ads,CAMP_002,Search - Install App,3500000,975,52500,Conversion
+2024-06-21,TikTok,CAMP_014,E-Sports Partnership,2600000,1950,156000,Awareness
+2024-06-21,Facebook,CAMP_013,Weekend Flash Sale,4500000,1125,112500,Awareness
+2024-06-22,Facebook,CAMP_005,Lookalike Converters,4200000,1050,95000,Conversion
+2024-06-22,Instagram,CAMP_009,DM Stories Ad,1600000,480,96000,Conversion
+2024-06-22,TikTok,CAMP_003,TikTok Creator Collab,2800000,2100,190000,Awareness
+2024-06-22,Google Ads,CAMP_006,YouTube In-stream,2700000,830,180000,Awareness
+2024-06-23,Facebook,CAMP_001,Summer Sale Awareness,5100000,1280,128000,Awareness
+2024-06-23,Facebook,CAMP_007,New Market - Da Nang,3600000,900,110000,Awareness
+2024-06-23,TikTok,CAMP_012,Gaming Vertical TikTok,3200000,2400,220000,Awareness
+2024-06-23,Google Ads,CAMP_008,App Install - Mid Market,2900000,810,65000,Conversion
+2024-06-24,Facebook,CAMP_010,Premium User Upsell,2900000,725,87500,Conversion
+2024-06-24,Instagram,CAMP_011,Influencer Partnership,2500000,690,150000,Awareness
+2024-06-24,Google Ads,CAMP_002,Search - Install App,3100000,860,40000,Conversion
+2024-06-24,TikTok,CAMP_003,TikTok Creator Collab,2600000,1950,155000,Awareness
+2024-06-25,Facebook,CAMP_013,Weekend Flash Sale,4400000,1100,110000,Awareness
+2024-06-25,Facebook,CAMP_005,Lookalike Converters,4300000,1075,95000,Conversion
+2024-06-25,TikTok,CAMP_014,E-Sports Partnership,2700000,2025,168000,Awareness
+2024-06-25,Instagram,CAMP_004,Stories Retargeting,2300000,660,132000,Conversion
+2024-06-26,Google Ads,CAMP_006,YouTube In-stream,2800000,860,190000,Awareness
+2024-06-26,Facebook,CAMP_001,Summer Sale Awareness,5400000,1350,135000,Awareness
+2024-06-26,TikTok,CAMP_003,TikTok Creator Collab,2700000,2025,168000,Awareness
+2024-06-26,Instagram,CAMP_009,DM Stories Ad,1700000,510,102000,Conversion
+2024-06-27,Facebook,CAMP_007,New Market - Da Nang,3800000,950,120000,Awareness
+2024-06-27,Google Ads,CAMP_008,App Install - Mid Market,2700000,750,58000,Conversion
+2024-06-27,TikTok,CAMP_012,Gaming Vertical TikTok,3100000,2320,210000,Awareness
+2024-06-27,Facebook,CAMP_010,Premium User Upsell,3000000,750,92500,Conversion
+2024-06-28,Facebook,CAMP_005,Lookalike Converters,4600000,1150,108000,Conversion
+2024-06-28,Instagram,CAMP_011,Influencer Partnership,2600000,715,160000,Awareness
+2024-06-28,Google Ads,CAMP_002,Search - Install App,3300000,915,47500,Conversion
+2024-06-28,TikTok,CAMP_003,TikTok Creator Collab,2500000,1875,155000,Awareness
+2024-06-29,Facebook,CAMP_001,Summer Sale Awareness,5600000,1400,140000,Awareness
+2024-06-29,Facebook,CAMP_013,Weekend Flash Sale,4600000,1150,115000,Awareness
+2024-06-29,Google Ads,CAMP_006,YouTube In-stream,2900000,890,200000,Awareness
+2024-06-29,TikTok,CAMP_014,E-Sports Partnership,2400000,1800,140000,Awareness
+2024-06-30,Facebook,CAMP_010,Premium User Upsell,2800000,700,85000,Conversion
+2024-06-30,Instagram,CAMP_004,Stories Retargeting,2400000,690,138000,Conversion
+2024-06-30,TikTok,CAMP_003,TikTok Creator Collab,2800000,2100,190000,Awareness
+2024-06-30,Google Ads,CAMP_008,App Install - Mid Market,3000000,835,68000,Conversion
+2024-07-01,Facebook,CAMP_001,Summer Sale Awareness,5300000,1330,133000,Awareness
+2024-07-01,Facebook,CAMP_005,Lookalike Converters,4400000,1100,102000,Conversion
+2024-07-01,TikTok,CAMP_012,Gaming Vertical TikTok,3300000,2475,225000,Awareness
+2024-07-01,Instagram,CAMP_011,Influencer Partnership,2700000,745,170000,Awareness
+2024-07-02,Google Ads,CAMP_002,Search - Install App,3400000,945,50000,Conversion
+2024-07-02,Facebook,CAMP_007,New Market - Da Nang,3900000,975,125000,Awareness
+2024-07-02,TikTok,CAMP_003,TikTok Creator Collab,2900000,2175,195000,Awareness
+2024-07-02,Instagram,CAMP_009,DM Stories Ad,1800000,540,108000,Conversion
+2024-07-03,Facebook,CAMP_010,Premium User Upsell,3200000,800,100000,Conversion
+2024-07-03,Google Ads,CAMP_006,YouTube In-stream,3000000,920,210000,Awareness
+2024-07-03,TikTok,CAMP_014,E-Sports Partnership,2800000,2100,168000,Awareness
+2024-07-03,Facebook,CAMP_013,Weekend Flash Sale,4700000,1175,117500,Awareness
+2024-07-04,Facebook,CAMP_005,Lookalike Converters,4500000,1125,105000,Conversion
+2024-07-04,TikTok,CAMP_003,TikTok Creator Collab,2700000,2025,168000,Awareness
+2024-07-04,Google Ads,CAMP_008,App Install - Mid Market,2900000,810,65000,Conversion
+2024-07-04,Instagram,CAMP_004,Stories Retargeting,2500000,720,150000,Conversion
+2024-07-05,Facebook,CAMP_001,Summer Sale Awareness,5500000,1375,137500,Awareness
+2024-07-05,Instagram,CAMP_011,Influencer Partnership,2800000,770,180000,Awareness
+2024-07-05,TikTok,CAMP_012,Gaming Vertical TikTok,3200000,2400,220000,Awareness
+2024-07-05,Google Ads,CAMP_002,Search - Install App,3200000,890,44000,Conversion
+2024-07-06,Facebook,CAMP_007,New Market - Da Nang,4000000,1000,130000,Awareness
+2024-07-06,TikTok,CAMP_003,TikTok Creator Collab,2600000,1950,155000,Awareness
+2024-07-06,Google Ads,CAMP_006,YouTube In-stream,3100000,950,220000,Awareness
+2024-07-06,Facebook,CAMP_010,Premium User Upsell,2700000,675,80000,Conversion
+2024-07-07,Facebook,CAMP_013,Weekend Flash Sale,4800000,1200,120000,Awareness
+2024-07-07,Instagram,CAMP_009,DM Stories Ad,1900000,570,114000,Conversion
+2024-07-07,Facebook,CAMP_005,Lookalike Converters,4200000,1050,95000,Conversion
+2024-07-07,TikTok,CAMP_014,E-Sports Partnership,2900000,2175,174000,Awareness
+2024-07-08,Google Ads,CAMP_008,App Install - Mid Market,2800000,780,62000,Conversion
+2024-07-08,Facebook,CAMP_001,Summer Sale Awareness,5700000,1425,142500,Awareness
+2024-07-08,TikTok,CAMP_003,TikTok Creator Collab,2800000,2100,190000,Awareness
+2024-07-08,Instagram,CAMP_011,Influencer Partnership,2900000,800,190000,Awareness
+2024-07-09,Facebook,CAMP_007,New Market - Da Nang,3700000,925,115000,Awareness
+2024-07-09,Google Ads,CAMP_002,Search - Install App,3500000,975,52500,Conversion
+2024-07-09,TikTok,CAMP_012,Gaming Vertical TikTok,3000000,2250,210000,Awareness
+2024-07-09,Instagram,CAMP_004,Stories Retargeting,2600000,750,156000,Conversion
+2024-07-10,Facebook,CAMP_010,Premium User Upsell,3100000,775,97500,Conversion
+2024-07-10,TikTok,CAMP_003,TikTok Creator Collab,2500000,1875,155000,Awareness
+2024-07-10,Google Ads,CAMP_006,YouTube In-stream,3200000,980,230000,Awareness
+2024-07-10,Facebook,CAMP_013,Weekend Flash Sale,4900000,1225,122500,Awareness
+2024-07-11,Facebook,CAMP_005,Lookalike Converters,4300000,1075,95000,Conversion
+2024-07-11,Instagram,CAMP_009,DM Stories Ad,2000000,600,120000,Conversion
+2024-07-11,TikTok,CAMP_014,E-Sports Partnership,2700000,2025,168000,Awareness
+2024-07-11,Google Ads,CAMP_008,App Install - Mid Market,2900000,810,65000,Conversion
+2024-07-12,Facebook,CAMP_001,Summer Sale Awareness,5400000,1350,135000,Awareness
+2024-07-12,TikTok,CAMP_003,TikTok Creator Collab,2900000,2175,195000,Awareness
+2024-07-12,Facebook,CAMP_007,New Market - Da Nang,3800000,950,120000,Awareness
+2024-07-12,Instagram,CAMP_011,Influencer Partnership,3000000,825,200000,Awareness
+2024-07-13,Google Ads,CAMP_002,Search - Install App,3300000,915,47500,Conversion
+2024-07-13,TikTok,CAMP_012,Gaming Vertical TikTok,3100000,2325,215000,Awareness
+2024-07-13,Facebook,CAMP_010,Premium User Upsell,2900000,725,87500,Conversion
+2024-07-13,Instagram,CAMP_004,Stories Retargeting,2700000,780,162000,Conversion
+2024-07-14,Facebook,CAMP_013,Weekend Flash Sale,4700000,1175,117500,Awareness
+2024-07-14,Facebook,CAMP_005,Lookalike Converters,4400000,1100,102000,Conversion
+2024-07-14,TikTok,CAMP_003,TikTok Creator Collab,2600000,1950,155000,Awareness
+2024-07-14,Google Ads,CAMP_006,YouTube In-stream,3300000,1010,240000,Awareness
+2024-07-15,Facebook,CAMP_001,Summer Sale Awareness,5600000,1400,140000,Awareness
+2024-07-15,Instagram,CAMP_009,DM Stories Ad,2100000,630,126000,Conversion
+2024-07-15,TikTok,CAMP_014,E-Sports Partnership,2500000,1875,155000,Awareness
+2024-07-15,Google Ads,CAMP_008,App Install - Mid Market,3000000,835,68000,Conversion
+2024-07-16,Facebook,CAMP_007,New Market - Da Nang,3900000,975,125000,Awareness
+2024-07-16,TikTok,CAMP_003,TikTok Creator Collab,2800000,2100,190000,Awareness
+2024-07-16,Instagram,CAMP_011,Influencer Partnership,3100000,850,210000,Awareness
+2024-07-16,Google Ads,CAMP_002,Search - Install App,3400000,945,50000,Conversion
+2024-07-17,Facebook,CAMP_010,Premium User Upsell,3200000,800,100000,Conversion
+2024-07-17,TikTok,CAMP_012,Gaming Vertical TikTok,3300000,2475,225000,Awareness
+2024-07-17,Google Ads,CAMP_006,YouTube In-stream,3400000,1040,250000,Awareness
+2024-07-17,Facebook,CAMP_013,Weekend Flash Sale,4600000,1150,115000,Awareness
+2024-07-18,Facebook,CAMP_005,Lookalike Converters,4500000,1125,105000,Conversion
+2024-07-18,Instagram,CAMP_004,Stories Retargeting,2800000,810,168000,Conversion
+2024-07-18,TikTok,CAMP_003,TikTok Creator Collab,2700000,2025,168000,Awareness
+2024-07-18,Google Ads,CAMP_008,App Install - Mid Market,2800000,780,62000,Conversion
+2024-07-19,Facebook,CAMP_001,Summer Sale Awareness,5800000,1450,145000,Awareness
+2024-07-19,Instagram,CAMP_009,DM Stories Ad,2200000,660,132000,Conversion
+2024-07-19,TikTok,CAMP_014,E-Sports Partnership,2800000,2100,168000,Awareness
+2024-07-19,Google Ads,CAMP_002,Search - Install App,3500000,975,52500,Conversion
+2024-07-20,Facebook,CAMP_007,New Market - Da Nang,4100000,1025,135000,Awareness
+2024-07-20,TikTok,CAMP_003,TikTok Creator Collab,2500000,1875,155000,Awareness
+2024-07-20,Instagram,CAMP_011,Influencer Partnership,3200000,880,220000,Awareness
+2024-07-20,Facebook,CAMP_010,Premium User Upsell,2800000,700,85000,Conversion
+2024-07-21,Google Ads,CAMP_006,YouTube In-stream,3500000,1075,260000,Awareness
+2024-07-21,TikTok,CAMP_012,Gaming Vertical TikTok,3200000,2400,220000,Awareness
+2024-07-21,Facebook,CAMP_013,Weekend Flash Sale,4900000,1225,122500,Awareness
+2024-07-21,Facebook,CAMP_005,Lookalike Converters,4200000,1050,95000,Conversion
+2024-07-22,Google Ads,CAMP_008,App Install - Mid Market,2900000,810,65000,Conversion
+2024-07-22,TikTok,CAMP_003,TikTok Creator Collab,2900000,2175,195000,Awareness
+2024-07-22,Instagram,CAMP_004,Stories Retargeting,2900000,840,174000,Conversion
+2024-07-22,Facebook,CAMP_001,Summer Sale Awareness,5700000,1425,142500,Awareness
+2024-07-23,Facebook,CAMP_007,New Market - Da Nang,3600000,900,110000,Awareness
+2024-07-23,Instagram,CAMP_009,DM Stories Ad,2300000,690,138000,Conversion
+2024-07-23,TikTok,CAMP_014,E-Sports Partnership,2600000,1950,156000,Awareness
+2024-07-23,Google Ads,CAMP_002,Search - Install App,3200000,890,44000,Conversion
+2024-07-24,Facebook,CAMP_010,Premium User Upsell,3100000,775,97500,Conversion
+2024-07-24,TikTok,CAMP_003,TikTok Creator Collab,2600000,1950,155000,Awareness
+2024-07-24,Google Ads,CAMP_006,YouTube In-stream,3600000,1100,270000,Awareness
+2024-07-24,Instagram,CAMP_011,Influencer Partnership,3300000,910,230000,Awareness
+2024-07-25,Facebook,CAMP_013,Weekend Flash Sale,5000000,1250,125000,Awareness
+2024-07-25,Facebook,CAMP_005,Lookalike Converters,4300000,1075,95000,Conversion
+2024-07-25,TikTok,CAMP_012,Gaming Vertical TikTok,3100000,2325,215000,Awareness
+2024-07-25,Google Ads,CAMP_008,App Install - Mid Market,3000000,835,68000,Conversion
+2024-07-26,Facebook,CAMP_001,Summer Sale Awareness,5900000,1475,147500,Awareness
+2024-07-26,Instagram,CAMP_004,Stories Retargeting,3000000,870,180000,Conversion
+2024-07-26,TikTok,CAMP_003,TikTok Creator Collab,2800000,2100,190000,Awareness
+2024-07-26,Facebook,CAMP_007,New Market - Da Nang,3700000,925,115000,Awareness
+2024-07-27,Google Ads,CAMP_002,Search - Install App,3600000,1000,54000,Conversion
+2024-07-27,Instagram,CAMP_009,DM Stories Ad,2400000,720,144000,Conversion
+2024-07-27,TikTok,CAMP_014,E-Sports Partnership,2700000,2025,168000,Awareness
+2024-07-27,Facebook,CAMP_010,Premium User Upsell,2900000,725,87500,Conversion
+2024-07-28,Google Ads,CAMP_006,YouTube In-stream,3700000,1130,280000,Awareness
+2024-07-28,TikTok,CAMP_003,TikTok Creator Collab,2700000,2025,168000,Awareness
+2024-07-28,Facebook,CAMP_013,Weekend Flash Sale,5100000,1275,127500,Awareness
+2024-07-28,Instagram,CAMP_011,Influencer Partnership,3400000,940,240000,Awareness
+2024-07-29,Facebook,CAMP_005,Lookalike Converters,4600000,1150,108000,Conversion
+2024-07-29,TikTok,CAMP_012,Gaming Vertical TikTok,3000000,2250,210000,Awareness
+2024-07-29,Google Ads,CAMP_008,App Install - Mid Market,2700000,750,58000,Conversion
+2024-07-29,Facebook,CAMP_001,Summer Sale Awareness,5600000,1400,140000,Awareness
+2024-07-30,Instagram,CAMP_004,Stories Retargeting,3100000,900,186000,Conversion
+2024-07-30,TikTok,CAMP_003,TikTok Creator Collab,2500000,1875,155000,Awareness
+2024-07-30,Google Ads,CAMP_002,Search - Install App,3700000,1025,55000,Conversion
+2024-07-30,Facebook,CAMP_007,New Market - Da Nang,3800000,950,120000,Awareness
+2024-07-31,Facebook,CAMP_010,Premium User Upsell,3000000,750,92500,Conversion
+2024-07-31,Instagram,CAMP_009,DM Stories Ad,2500000,750,150000,Conversion
+2024-07-31,Google Ads,CAMP_006,YouTube In-stream,3800000,1160,290000,Awareness
+2024-07-31,TikTok,CAMP_014,E-Sports Partnership,2900000,2175,174000,Awareness
+2024-08-01,Facebook,CAMP_013,Weekend Flash Sale,5200000,1300,130000,Awareness
+2024-08-01,Facebook,CAMP_005,Lookalike Converters,4700000,1175,110000,Conversion
+2024-08-01,TikTok,CAMP_003,TikTok Creator Collab,2600000,1950,155000,Awareness
+2024-08-01,Google Ads,CAMP_008,App Install - Mid Market,2800000,780,62000,Conversion
+2024-08-02,Facebook,CAMP_001,Summer Sale Awareness,6000000,1500,150000,Awareness
+2024-08-02,TikTok,CAMP_012,Gaming Vertical TikTok,3200000,2400,220000,Awareness
+2024-08-02,Instagram,CAMP_011,Influencer Partnership,3500000,960,250000,Awareness
+2024-08-02,Google Ads,CAMP_002,Search - Install App,3800000,1050,56000,Conversion
