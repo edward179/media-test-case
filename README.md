@@ -10,46 +10,7 @@ Bài assessment cho vai trò **Data Analytics Engineer** hỗ trợ Momo Media, 
 
 Pipeline Python (pandas) transform 4 file CSV thô (`Momo Test Data/`) thành 4 bảng data mart sạch, đổ lên Google Sheets, rồi build dashboard trên Looker Studio.
 
-```mermaid
-flowchart LR
-    subgraph EX["1. EXTRACT"]
-        A1["momo_campaign_meta.csv<br/>(14 campaigns)"]
-        A2["momo_media_spend.csv<br/>(261 rows, daily)"]
-        A3["momo_user_acquisition.csv<br/>(261 rows, daily)"]
-        A4["momo_user_ltv.csv<br/>(99 rows, weekly cohort)"]
-    end
-
-    subgraph ET["2. TRANSFORM — Python/pandas (build_data_mart.py)"]
-        B1["Join spend + acquisition<br/>theo date + campaign_id"]
-        B2["Gộp spend & install theo tuần<br/>(đúng mốc cohort_week của LTV)"]
-        B3["Tính CAC, CTR, rolling 7-day CAC,<br/>cohort maturity, LTV:CAC"]
-        B4["Composite health_score →<br/>Scale / Maintain / Optimize / Pause"]
-    end
-
-    subgraph LD["3. LOAD"]
-        C1[("Google Sheets<br/>4 tabs")]
-    end
-
-    subgraph VZ["4. VISUALIZE — Looker Studio"]
-        D1["Executive<br/>Summary"]
-        D2["Platform<br/>Performance"]
-        D3["Campaign<br/>Ranking"]
-        D4["Budget<br/>Allocation"]
-    end
-
-    A1 --> B1
-    A2 --> B1
-    A3 --> B1
-    A4 --> B2
-    B1 --> B2
-    B2 --> B3
-    B3 --> B4
-    B4 --> C1
-    C1 --> D1
-    C1 --> D2
-    C1 --> D3
-    C1 --> D4
-```
+![Task 1 — Data Architecture (Extract → Transform → Load → Visualize)](task1-data-architecture.png)
 
 **Điểm khác biệt hóa chính**:
 - **Granularity mismatch**: `momo_user_ltv.csv` ở grain **tuần** (cohort), còn spend/acquisition ở grain **ngày** — xử lý bằng cách gộp daily data thành bucket 7-ngày đúng mốc `cohort_week` trước khi join, thay vì blend thẳng 4 CSV (dễ join sai/mất data LTV).
@@ -70,35 +31,9 @@ flowchart LR
 
 Prototype đọc trực tiếp output của Task 1 (`fact_daily`, `mart_campaign_summary`), tính tín hiệu hiệu suất bằng rule-based logic, rồi gọi Claude API (structured output) để sinh đề xuất media plan.
 
-```mermaid
-flowchart LR
-    subgraph SRC["Nền tảng quảng cáo thật (Meta / Google / TikTok) — chưa kết nối, mới là đề xuất"]
-        S0["Ads API<br/>(Meta / Google / TikTok)"]
-    end
+![Task 2 — AI Automation Workflow (rule-based signals → AI đề xuất → người duyệt → mutate/dừng)](task2-ai-workflow.svg)
 
-    subgraph RULE["TÍNH BẰNG CÔNG THỨC CÓ SẴN — Python/pandas, KHÔNG dùng AI"]
-        B1["Bước 1 — Nhận dữ liệu đầu vào<br/>từ Task 1: fact_daily.csv +<br/>mart_campaign_summary.csv"]
-        B2["Bước 2 — Tính chỉ số cảnh báo<br/>CAC tăng bất thường · lệch so target ·<br/>LTV:CAC giảm · CTR giảm dần"]
-    end
-
-    subgraph LLM["AI TẠO ĐỀ XUẤT — Claude API, gọi 1 lần, trả lời theo khuôn mẫu cố định"]
-        B34["Bước 3 — AI đề xuất hành động:<br/>Scale/Maintain/Optimize/Pause,<br/>% ngân sách, độ tin cậy, lý do<br/>Bước 4 — Gợi ý thêm cho Media<br/>(cần người duyệt)"]
-    end
-
-    subgraph GOV["KIỂM SOÁT RỦI RO — mới là đề xuất kiến trúc, CHƯA code"]
-        B6a["Bước 6 — Người duyệt trước khi<br/>áp dụng (vd: nhắn Slack xin duyệt)"]
-        B6b["Nhật ký duyệt<br/>(ai duyệt/từ chối, lúc nào)"]
-    end
-
-    S0 -. "Bước 5 (đề xuất, chưa làm):<br/>tự động lấy dữ liệu mỗi đêm" .-> B1
-    B1 --> B2
-    B2 --> B34
-    B34 -. "bản đề xuất media plan (JSON)" .-> B6a
-    B6a -. "luôn ghi lại" .-> B6b
-    B6a -. "nếu được duyệt → tự chỉnh ngân sách" .-> S0
-```
-
-*Khung viền liền (tính bằng công thức, AI đề xuất) = đã code, chạy thật trên data thật. Khung nét đứt (nền tảng quảng cáo thật, kiểm soát rủi ro) = mới là đề xuất kiến trúc, cố ý chưa code trong phạm vi thời gian assessment — cần hạ tầng/credentials thật (Slack, Ads API) và cơ chế duyệt đúng cách trước khi tự động chỉnh ngân sách thật.*
+*Vùng viền xanh lá (Rule-based + AI) = đã code, chạy thật trên data thật. Các vùng còn lại (nguồn dữ liệu, người duyệt, kết quả sau duyệt) = mới là đề xuất kiến trúc, cố ý chưa code trong phạm vi thời gian assessment — cần hạ tầng/credentials thật (Slack/Email, Ads API) và cơ chế duyệt đúng cách trước khi tự động chỉnh ngân sách thật. Nếu bị từ chối (NO), hệ thống dừng hẳn và ghi log — không tự động lặp lại vì data đầu vào chưa đổi.*
 
 ### Chạy thử
 ```bash
