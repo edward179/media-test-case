@@ -1,33 +1,14 @@
 """
-Momo Media Assessment — Task 1 data mart builder.
+Task 1 data mart builder. Reads 4 raw CSVs (Momo Test Data/) -> 4 clean
+outputs (output/) for Sheets -> Looker Studio.
 
-Reads the 4 raw CSVs in "Momo Test Data/" and produces 4 clean, join-ready
-outputs in "output/" for Google Sheets -> Looker Studio.
-
-Key data realities this script deliberately handles (do not "fix" away):
-
-1. Granularity mismatch: media_spend / user_acquisition are near-daily,
-   user_ltv is weekly-cohort. Blending these directly in Looker Studio
-   joins incorrectly. This script pre-aggregates spend/installs into the
-   SAME weekly cohort buckets as user_ltv before joining.
-
-2. Sparse, WIDENING sampling gaps: the "daily" files are not one row per
-   calendar day. Each campaign has 13-34 rows spread over ~63 days, and the
-   gap between consecutive rows grows from ~1 day early in the campaign to
-   4-9 days later. A row-based rolling window (e.g. pandas .rolling(7))
-   would silently average across a much longer/shorter real time span than
-   "7 days". We use a TIME-based rolling window (rolling("7D") on the date
-   index) instead.
-
-3. Immature cohorts: the dataset only spans 2024-06-01 to 2024-08-03
-   (~63 days). That means NO cohort in this dataset can ever be 90 days
-   old -> the D90_revenue_per_user column is numerically populated for
-   every row but is never actually observed/mature. Treating it as real
-   would silently bias every LTV:CAC number upward. We compute a maturity
-   flag per cohort (based on cohort_week age vs. the dataset's max date)
-   and only use a revenue window as the "official" LTV number once that
-   window has actually had time to happen, falling back
-   D90 -> D30 -> D7 -> D1 depending on how old the cohort actually is.
+Don't "fix" away:
+- spend/acq are daily-ish, LTV is weekly cohort -> pre-aggregate into the
+  same weekly buckets before joining.
+- Sampling gaps widen over time (1-9 days) -> rolling_7d_cac uses a
+  time-based window, not row count.
+- Data spans only ~63 days -> no cohort is ever D90-mature; best LTV
+  window falls back D90->D30->D7->D1 by real cohort age.
 """
 
 from pathlib import Path
@@ -77,15 +58,10 @@ def build_fact_daily(spend: pd.DataFrame, acq: pd.DataFrame) -> pd.DataFrame:
 
     fact["days_since_prev_row"] = fact.groupby("campaign_id")["date"].diff().dt.days
 
-    # Time-based (not row-based) 7-day rolling CAC: robust to the widening
-    # sampling gaps documented above. Computed as rolling(sum spend)/rolling(sum installs)
-    # over a real 7-calendar-day trailing window, per campaign.
+    # Time-based 7-day rolling CAC per campaign (robust to widening gaps above).
     def rolling_cac(g: pd.DataFrame) -> pd.Series:
-        # Must return a Series indexed like the ORIGINAL rows (not .values / a
-        # bare array): on pandas 3.x, groupby(...).apply(fn, include_groups=False)
-        # with an array-returning fn produces one row per GROUP holding the whole
-        # array, not one row per original record — assigning that back to the
-        # frame then aligns by the (mismatched) index and silently yields all-NaN.
+        # Must keep the ORIGINAL row index, or groupby.apply misaligns and
+        # silently produces all-NaN on pandas 3.x.
         orig_index = g.index
         g = g.set_index("date")
         roll_spend = g["daily_spend_vnd"].rolling("7D").sum()
@@ -166,9 +142,7 @@ def build_mart_campaign_summary(dim: pd.DataFrame, fact_daily: pd.DataFrame, coh
     agg["blended_cac"] = agg["total_spend"] / agg["total_installs"]
     agg["overall_ctr"] = agg["total_clicks"] / agg["total_impressions"]
 
-    # Only cohorts old enough to have at least a D7 read are usable as an
-    # "official" LTV signal; immature cohorts are excluded from the campaign
-    # rollup rather than silently dragging it down/up.
+    # Only D7+ mature cohorts count toward the campaign LTV rollup.
     mature = cohort[cohort["matured_d7"]].copy()
     mature["weighted_ltv"] = mature["best_ltv_per_user"] * mature["cohort_size"]
     ltv_roll = (
@@ -190,11 +164,8 @@ def build_mart_campaign_summary(dim: pd.DataFrame, fact_daily: pd.DataFrame, coh
     mart = mart.merge(ltv_roll[["campaign_id", "mature_ltv_per_user", "retention_d7", "mature_cohort_count"]],
                        on="campaign_id", how="left")
 
-    # Distinguish "no LTV tracking at all" (campaign never appears in
-    # user_ltv.csv - a data collection gap) from "has cohorts but none old
-    # enough yet" (a timing issue). Conflating these silently inflates the
-    # health score for untracked campaigns, since a missing component would
-    # otherwise drop out of the weighted average entirely (see below).
+    # Distinguish "never tracked in user_ltv.csv" from "tracked but not
+    # mature yet" — conflating them would inflate untracked campaigns' score.
     campaigns_with_any_ltv_row = set(cohort["campaign_id"].unique())
     mart["has_ltv_tracking"] = mart["campaign_id"].isin(campaigns_with_any_ltv_row)
     mart["has_mature_ltv_data"] = mart["mature_cohort_count"].fillna(0) > 0
@@ -228,13 +199,9 @@ def build_mart_campaign_summary(dim: pd.DataFrame, fact_daily: pd.DataFrame, coh
     mart["ltv_cac_score"] = mart.apply(ltv_cac_score, axis=1)
     mart["retention_score"] = mart.apply(retention_score, axis=1)
 
-    # health_score: weighted composite, re-weighted across whichever
-    # components are actually available. IMPORTANT: with only 1 of 3
-    # components present (e.g. CAC-only, when LTV tracking is missing
-    # entirely) that single component gets 100% of the weight, which would
-    # inflate the score for the LEAST-understood campaigns. We track how
-    # many components fed the score (`score_components_used`) and use that,
-    # not just the score, when deciding Scale vs Optimize below.
+    # Weighted composite, re-weighted across available components. Tracks
+    # score_components_used so a CAC-only score (missing LTV) isn't treated
+    # the same as a fully-vetted one.
     weights = {"cac_efficiency_score": 0.40, "ltv_cac_score": 0.35, "retention_score": 0.25}
 
     def composite(row):
@@ -253,12 +220,8 @@ def build_mart_campaign_summary(dim: pd.DataFrame, fact_daily: pd.DataFrame, coh
     mart = pd.concat([mart, mart.apply(composite, axis=1)], axis=1)
 
     def recommend(row):
-        # Governance guardrail: never recommend Scale without mature LTV
-        # data, and be explicit about WHY when data is missing vs. just
-        # genuinely underperforming.
+        # Guardrail: never Scale without mature LTV data.
         if row["ltv_data_status"] != "Mature Available":
-            # A campaign burning far past its target CAC should still be
-            # flagged regardless of missing LTV - that call doesn't need LTV.
             if pd.notna(row["cac_vs_target_pct"]) and row["cac_vs_target_pct"] > 50:
                 return "Pause"
             return "Optimize"
@@ -287,17 +250,9 @@ def main():
     fact_weekly_cohort = build_fact_weekly_cohort(fact_daily, ltv, reference_date)
     mart_campaign_summary = build_mart_campaign_summary(dim_campaign, fact_daily, fact_weekly_cohort)
 
-    # Round every float column to 2dp before writing. Python floats round-trip
-    # with 15-17 significant digits (e.g. 2.666084872611266); Google Sheets on
-    # a non-US locale (comma-decimal, dot-as-thousands-separator) can strip
-    # every "." out of a long decimal string on import, turning 2.67 into a
-    # ~2.7 quadrillion integer. 2dp is more than enough precision for CAC/LTV
-    # figures and drastically shortens the string, but the real fix is still
-    # setting the Sheet's locale to a dot-decimal one (e.g. United States)
-    # before importing - rounding alone does not make this parser-proof.
-    # CTR is a small ratio (~0.004-0.02): 2dp collapses it to {0.00, 0.01, 0.02}
-    # and destroys almost all signal, so it needs more decimal places than the
-    # currency/score/percentage columns that 2dp suits fine.
+    # Round floats before writing (shorter decimals survive non-US-locale
+    # Sheets imports better). CTR needs 4dp — it's a small ratio and 2dp
+    # collapses it to ~3 distinct values.
     HIGH_PRECISION_COLS = {"ctr", "overall_ctr"}
     for df in (dim_campaign, fact_daily, fact_weekly_cohort, mart_campaign_summary):
         float_cols = df.select_dtypes(include="float").columns

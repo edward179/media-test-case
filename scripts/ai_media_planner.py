@@ -1,27 +1,17 @@
 """
-Momo Media Assessment — Task 2 prototype.
+Task 2 prototype — Bước 1-4 of the AI automation workflow.
 
-Working prototype for Bước 1-4 of the AI automation workflow:
-  1. Nhận vào  — reuse Task 1's fact_daily / fact_weekly_cohort / mart_campaign_summary.
-  2. Xử lý     — RULE-BASED signals only (no LLM): rolling CAC trend, z-score
-                 anomaly vs each campaign's own baseline, CAC-vs-target variance,
-                 CTR trend (creative fatigue proxy), LTV:CAC trend. LLMs are not
-                 reliable at exact arithmetic, so all numeric work happens here in
-                 plain pandas/numpy before anything is handed to Claude.
-  3. Output   — Claude API call with a forced tool call (structured output): the
-                 model receives only the pre-computed signal JSON (not raw CSV),
-                 and must return action / budget_delta_pct / confidence / rationale.
-  4. Suggest  — a second field on the same structured output for supplementary,
-                 human-reviewed suggestions (creative fatigue, anomaly flags),
-                 explicitly labeled as needing Media team sign-off.
+1. Nhận vào — reuse Task 1's fact_daily / fact_weekly_cohort / mart_campaign_summary.
+2. Xử lý    — rule-based signals only, no LLM (rolling CAC trend, z-score
+              anomaly, CAC-vs-target, CTR trend, LTV:CAC trend).
+3. Output   — Claude call (forced tool use) turns the pre-computed signal
+              JSON into action / budget_delta_pct / confidence / rationale.
+4. Suggest  — same call also returns supplementary ideas, flagged as
+              needing Media team sign-off.
 
-Runs in two modes:
-  - MOCK  (default, no ANTHROPIC_API_KEY needed): deterministic rule-based
-    stand-in for the LLM call, so the full flow can be demoed/iterated on for
-    free. Clearly labeled "_source": "MOCK" in the output.
-  - LIVE  (ANTHROPIC_API_KEY set): calls the real Claude API with the same
-    tool schema and prompt. Falls back to MOCK per-campaign if a live call
-    errors, so one bad request doesn't kill the whole run.
+MOCK mode (default, no ANTHROPIC_API_KEY) runs a deterministic rule-based
+stand-in for free. LIVE mode calls the real API, falling back to mock
+per-campaign on error.
 """
 
 import json
@@ -32,8 +22,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-# Windows consoles often default stdout to cp1252, which can't encode "—"/"Δ".
-# Force UTF-8 so this runs cleanly in cmd.exe/PowerShell, not just UTF-8 terminals.
+# Force UTF-8 stdout so "—"/"Δ" render in cmd.exe/PowerShell (default cp1252).
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
     sys.stderr.reconfigure(encoding="utf-8")
@@ -125,9 +114,8 @@ def compute_signals(fact_daily: pd.DataFrame, fact_weekly_cohort: pd.DataFrame, 
         g = g.sort_values("date")
         daily_cac = g["daily_cac"].dropna()
 
-        # z-score of the most recent readings against this campaign's OWN
-        # historical baseline (excludes the recent window from the baseline
-        # itself, so a real recent spike doesn't get absorbed into "normal").
+        # z-score of recent readings vs this campaign's own baseline
+        # (recent window excluded from the baseline itself).
         if len(daily_cac) > 5:
             baseline, recent = daily_cac.iloc[:-3], daily_cac.iloc[-3:]
         else:
@@ -192,10 +180,8 @@ def call_claude_real(signal: dict) -> dict:
 
 
 def call_claude_mock(signal: dict) -> dict:
-    """Deterministic stand-in for the LLM call, applying the SAME governance
-    rule the system prompt asks Claude to follow, so mock and live output are
-    directly comparable. Clearly a simulation, not a claim of what Claude
-    would actually say — good enough to validate the end-to-end flow for free."""
+    """Deterministic stand-in for the LLM call — applies the same governance
+    rule as SYSTEM_PROMPT so mock and live output are comparable."""
     ltv_ok = signal["ltv_data_status"] == "Mature Available"
     over_target = signal["cac_vs_target_pct"]
 
